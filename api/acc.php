@@ -4,10 +4,10 @@ include "../base.php";
 $acc=$_GET['acc'];
 $user=$User->find(['acc'=>$acc]);
 
-if(empty($user)){
-    echo 0;
-}else{
+if(!empty($user)){
     echo 1;
+}else{
+    echo 0;
 }
 
 ?>
