@@ -39,11 +39,24 @@ include "base.php";
 			</div>
 			<div class="hal" id="main">
 				<div>
-					<span style="width:80%; display:inline-block;">
+					<span style="width:78%; display:inline-block;">
 						<marquee> 請民眾踴躍投稿電子報，讓電子報成為大家相交流，分享的園地！詳見最新文章</marquee>
 					</span>
-					<span style="width:18%; display:inline-block;">
-						<a href="?do=login">會員登入</a>
+					<span style="width:20%; display:inline-block;">
+					<?php
+					if(!empty($_SESSION['login'])){
+						echo "歡迎" . $_SESSION['login'];
+						if($_SESSION['login'] == 'admin'){
+							echo "<br><button onclick='location.href=&#39;admin.php&#39;'>管理</button>";
+							echo "|<button onclick='location.href=&#39;api/logout.php&#39;'>登出</button>";
+						}else{
+							echo "<button onclick='location.href=&#39;api/logout.php&#39;'>登出</button>";
+						}
+					}else{
+						echo "<a href='?do=login'>會員登入</a>";
+					}
+					
+					?>
 					</span>
 					<div class="">
 						<?php
